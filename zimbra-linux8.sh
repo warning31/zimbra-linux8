@@ -63,7 +63,7 @@ systemctl disable postfix
 yum clean all
 yum -y install epel-release
 yum update -y
-yum upgrade -y
+#yum upgrade -y
 yum -y install perl
 yum -y install perl-core
 yum -y install libstdc++.so.6
