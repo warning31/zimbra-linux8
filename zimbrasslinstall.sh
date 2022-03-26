@@ -20,7 +20,7 @@ wget -4 -O /usr/sbin/zimbrasslrenew.sh https://raw.githubusercontent.com/warning
 crontab
 
 
-certbot certonly --standalone -d $DOMAIN -m $MAIL
+certbot certonly --standalone -d $DOMAIN #-m $MAIL
 #
 cd /etc/letsencrypt/live/$DOMAIN/ || exit
 #wget -4 -O /etc/letsencrypt/live/$DOMAIN/zimbra_chain.pem https://letsencrypt.org/certs/trustid-x3-root.pem.txt
