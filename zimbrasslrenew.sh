@@ -6,10 +6,7 @@ echo ""
 
 DOMAIN="$SSLDOMAIN"
 #
-yum install epel-release -y
-yum install certbot -y
-
-certbot certonly --standalone -d $DOMAIN
+certbot renew
 #
 cd /etc/letsencrypt/live/$DOMAIN/ || exit
 #wget -4 -O /etc/letsencrypt/live/$DOMAIN/zimbra_chain.pem https://letsencrypt.org/certs/trustid-x3-root.pem.txt
