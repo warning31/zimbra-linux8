@@ -83,6 +83,7 @@ yum -y install rsync
 yum -y install telnet
 yum -y install aspell
 yum -y install net-tools
+yum -y install certbot
 
 # Restart Network
 service network restart
