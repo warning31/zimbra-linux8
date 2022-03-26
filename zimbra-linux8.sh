@@ -2,11 +2,10 @@
 clear
 
 echo -e "##########################################################################"
-echo -e "#               Ahmad Imanudin - http://www.imanudin.net                 #"
-echo -e "#If there any question about this script, feel free to contact me below  #"
-echo -e "#                    Contact at ahmad@imanudin.com                       #"
-echo -e "#                     Contact at iman@imanudin.net                       #"
-echo -e "#                               www.imanudin.net                         #"
+echo -e "#      Avci Internet ve Bilisim Hizmetleri - http://www.avciweb.com      #"
+echo -e "#                  Zimbra Oracle and Centos 8 install                    #"
+echo -e "#                    Contact at info@avciweb.com.tr                      #"
+echo -e "#                               www.avciweb.com                          #"
 echo -e "##########################################################################"
 
 echo ""
@@ -36,7 +35,7 @@ echo -e "[INFO] : Configuring /etc/hosts"
 echo ""
 echo -n "Hostname. Example mail : "
 read HOSTNAME
-echo -n "Domain name. Example imanudin.net : "
+echo -n "Domain name. Example mail.avciweb.com : "
 read DOMAIN
 echo -n "IP Address : "
 read IPADDRESS
@@ -62,13 +61,13 @@ systemctl disable postfix
 # Update repo and install package needed by Zimbra
 
 yum update -y
-yum upgrade -y
-yum -y install perl perl-core
+#yum upgrade -y
+yum -y install perl perl-core libstdc++.so.6
 yum -y install wget screen
 yum -y install w3m
 yum -y install openssh-clients openssh-server
 yum -y install bind bind-utils
-yum -y install unzip nmap
+yum -y install unzip nmap nmap-ncat
 yum -y install sed nc
 yum -y install sysstat libaio
 yum -y install rsync telnet
