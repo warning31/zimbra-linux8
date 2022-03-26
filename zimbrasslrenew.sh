@@ -1,5 +1,14 @@
 #!/bin/bash
 #
+#
+
+if [ ! -L /usr/sbin/zimbrasslrenew.sh ]; then
+ln -s /etc/zimbrassl/zimbrasslrenew.sh /usr/sbin/
+fi
+
+<<crontab
+30 01 * * *  root    /usr/sbin/zimbrasslrenew.sh
+crontab
 echo -n "Domain name. Example mail.avciweb.com : "
 read SSLDOMAIN
 echo ""
