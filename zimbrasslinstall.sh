@@ -1,15 +1,20 @@
 #!/bin/bash
 #
-echo -n "Domain name. Example mail.avciweb.com : "
-read SSLDOMAIN
+#echo -n "Domain name. Example mail.avciweb.com : "
+#read SSLDOMAIN
+#echo ""
+
+echo -n "Domain name. Example info@avciweb.com : "
+read SSLMAIL
 echo ""
 
-DOMAIN="$SSLDOMAIN"
-#
-yum install epel-release -y
-yum install certbot -y
+DOMAIN=$(su - zimbra -c "zmcontrol status |grep Host" |cut -d" " -f2)
+MAIL="$SSLMAIL"
 
-certbot certonly --standalone -d $DOMAIN
+#DOMAIN="$SSLDOMAIN"
+#
+
+certbot certonly --standalone -d $DOMAIN -m $SSLMAIL
 #
 cd /etc/letsencrypt/live/$DOMAIN/ || exit
 #wget -4 -O /etc/letsencrypt/live/$DOMAIN/zimbra_chain.pem https://letsencrypt.org/certs/trustid-x3-root.pem.txt

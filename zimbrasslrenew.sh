@@ -2,10 +2,6 @@
 #
 #
 
-if [ ! -L /usr/sbin/zimbrasslrenew.sh ]; then
-ln -s /etc/zimbrassl/zimbrasslrenew.sh /usr/sbin/
-fi
-
 <<crontab
 30 01 * * *  root    /usr/sbin/zimbrasslrenew.sh
 crontab
