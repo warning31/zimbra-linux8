@@ -15,12 +15,11 @@ DOMAIN="$SSLDOMAIN"
 wget -4 -O /usr/sbin/zimbrasslrenew.sh https://raw.githubusercontent.com/warning31/zimbra-linux8/main/zimbrasslrenew.sh
 
 # renew cron
-<<crontab
+crontab <<EOF
 30 01 * * *  root    /usr/sbin/zimbrasslrenew.sh
-crontab
+EOF
 
-
-certbot certonly --standalone -d $DOMAIN #-m $MAIL
+certbot certonly --standalone -d $DOMAIN -m $MAIL
 #
 cd /etc/letsencrypt/live/$DOMAIN/ || exit
 #wget -4 -O /etc/letsencrypt/live/$DOMAIN/zimbra_chain.pem https://letsencrypt.org/certs/trustid-x3-root.pem.txt

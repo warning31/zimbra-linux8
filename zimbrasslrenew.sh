@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 echo -n "Domain name. Example mail.avciweb.com : "
 read SSLDOMAIN
 echo ""
