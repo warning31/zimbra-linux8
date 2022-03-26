@@ -60,53 +60,31 @@ systemctl disable postfix
 
 # Update repo and install package needed by Zimbra
 
+yum clean all
 yum -y install epel-release
-yum clean all
 yum update -y
-yum clean all
 yum upgrade -y
-yum clean all
 yum -y install perl
-yum clean all 
 yum -y install perl-core
-yum clean all 
 yum -y install libstdc++.so.6
-yum clean all
 yum -y install wget
-yum clean all 
 yum -y install screen
-yum clean all
 #yum -y install w3m
 yum -y install openssh-clients
-yum clean all 
 yum -y install openssh-server
-yum clean all
 yum -y install bind
-yum clean all 
 yum -y install bind-utils
-yum clean all
 yum -y install unzip
-yum clean all 
 yum -y install nmap
-yum clean all 
 yum -y install nmap-ncat
-yum clean all
 yum -y install sed
-yum clean all 
 yum -y install nc
-yum clean all
 yum -y install sysstat
-yum clean all 
 yum -y install libaio
-yum clean all
 yum -y install rsync
-yum clean all 
 yum -y install telnet
-yum clean all
 yum -y install aspell
-yum clean all 
 yum -y install net-tools
-yum clean all
 
 # Restart Network
 service network restart
