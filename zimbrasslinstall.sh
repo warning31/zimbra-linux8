@@ -11,7 +11,7 @@ echo ""
 MAIL="$SSLMAIL"
 DOMAIN="$SSLDOMAIN"
 
-# renew ssl
+# renew ssl 
 wget -4 -O /usr/sbin/zimbrasslrenew.sh https://raw.githubusercontent.com/warning31/zimbra-linux8/main/zimbrasslrenew.sh
 
 # renew cron
