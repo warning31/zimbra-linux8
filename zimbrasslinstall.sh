@@ -22,7 +22,7 @@ crontab
 
 #
 
-certbot certonly --standalone -d $DOMAIN -m $SSLMAIL
+certbot certonly --standalone -d $DOMAIN -m $MAIL
 #
 cd /etc/letsencrypt/live/$DOMAIN/ || exit
 #wget -4 -O /etc/letsencrypt/live/$DOMAIN/zimbra_chain.pem https://letsencrypt.org/certs/trustid-x3-root.pem.txt
