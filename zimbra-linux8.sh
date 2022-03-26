@@ -61,6 +61,7 @@ systemctl disable postfix
 # Update repo and install package needed by Zimbra
 
 yum clean all
+yum -y install epel-release
 yum update -y
 #yum upgrade -y
 yum -y install perl 
@@ -68,7 +69,7 @@ yum -y install perl-core
 yum -y install libstdc++.so.6
 yum -y install wget 
 yum -y install screen
-yum -y install w3m
+#yum -y install w3m
 yum -y install openssh-clients 
 yum -y install openssh-server
 yum -y install bind 
