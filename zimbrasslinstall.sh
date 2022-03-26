@@ -11,6 +11,12 @@ echo ""
 DOMAIN=$(su - zimbra -c "zmcontrol status |grep Host" |cut -d" " -f2)
 MAIL="$SSLMAIL"
 
+wget -4 -O /usr/sbin/zimbrasslrenew.sh https://raw.githubusercontent.com/warning31/zimbra-linux8/main/zimbrasslrenew.sh
+
+<<crontab
+30 01 * * *  root    /usr/sbin/zimbrasslrenew.sh
+crontab
+
 #DOMAIN="$SSLDOMAIN"
 #
 

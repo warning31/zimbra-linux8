@@ -2,9 +2,6 @@
 #
 #
 
-<<crontab
-30 01 * * *  root    /usr/sbin/zimbrasslrenew.sh
-crontab
 echo -n "Domain name. Example mail.avciweb.com : "
 read SSLDOMAIN
 echo ""
