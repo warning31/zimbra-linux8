@@ -16,7 +16,7 @@ wget -4 -O /usr/sbin/zimbrasslrenew.sh https://raw.githubusercontent.com/warning
 
 # renew cron
 crontab <<EOF
-30 01 * * *  root    /usr/sbin/zimbrasslrenew.sh
+0 0 * * *  root    /usr/sbin/zimbrasslrenew.sh
 EOF
 
 certbot certonly --standalone -d $DOMAIN -m $MAIL
