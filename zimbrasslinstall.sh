@@ -1,23 +1,25 @@
 #!/bin/bash
 #
-#echo -n "Domain name. Example mail.avciweb.com : "
-#read SSLDOMAIN
-#echo ""
+echo -n "Domain name. Example mail.avciweb.com : "
+read SSLDOMAIN
+echo ""
 
-echo -n "Domain name. Example info@avciweb.com : "
+echo -n "E-mail name. Example info@avciweb.com : "
 read SSLMAIL
 echo ""
 
-DOMAIN=$(su - zimbra -c "zmcontrol status |grep Host" |cut -d" " -f2)
 MAIL="$SSLMAIL"
+DOMAIN="$SSLDOMAIN"
 
+# renew ssl
 wget -4 -O /usr/sbin/zimbrasslrenew.sh https://raw.githubusercontent.com/warning31/zimbra-linux8/main/zimbrasslrenew.sh
 
+# renew cron
 <<crontab
 30 01 * * *  root    /usr/sbin/zimbrasslrenew.sh
 crontab
 
-#DOMAIN="$SSLDOMAIN"
+
 #
 
 certbot certonly --standalone -d $DOMAIN -m $SSLMAIL
