@@ -60,7 +60,6 @@ systemctl disable postfix
 
 # Update repo and install package needed by Zimbra
 
-yum clean all
 yum -y install epel-release
 yum clean all
 yum update -y
