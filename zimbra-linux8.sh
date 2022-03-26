@@ -60,8 +60,8 @@ systemctl disable postfix
 
 # Update repo and install package
 
-yum -y install epel-release
 yum clean all
+yum -y install epel-release
 yum update -y
 yum -y install perl
 yum -y install perl-core
