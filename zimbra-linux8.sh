@@ -64,7 +64,8 @@ yum -y install epel-release
 yum clean all
 yum update -y
 yum clean all
-#yum upgrade -y
+yum upgrade -y
+yum clean all
 yum -y install perl
 yum clean all 
 yum -y install perl-core
