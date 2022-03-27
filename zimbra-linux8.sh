@@ -132,7 +132,7 @@ echo "ns1	IN	A	$IPADDRESS" >> /var/named/db.$DOMAIN
 echo "$HOSTNAME	IN	A	$IPADDRESS" >> /var/named/db.$DOMAIN
 
 # Insert localhost as the first Nameserver
-sed -i '1 s/^/nameserver 127.0.0.1\n/' /etc/resolv.conf
+#sed -i '1 s/^/nameserver 127.0.0.1\n/' /etc/resolv.conf
 
 # Restart Service & Check results configuring DNS Server
 
