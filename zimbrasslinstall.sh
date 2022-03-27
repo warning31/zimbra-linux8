@@ -1,15 +1,15 @@
 #!/bin/bash
 #
 echo -n "Domain name. Example mail.avciweb.com : "
-read SSLDOMAIN
+read DOMAIN
 echo ""
 
 echo -n "E-mail name. Example info@avciweb.com : "
 read SSLMAIL
 echo ""
 
-MAIL="$SSLMAIL"
-DOMAIN="$SSLDOMAIN"
+#MAIL="$SSLMAIL"
+#DOMAIN="$SSLDOMAIN"
 
 # renew ssl 
 wget -4 -O /usr/sbin/zimbrasslrenew.sh https://raw.githubusercontent.com/warning31/zimbra-linux8/main/zimbrasslrenew.sh
@@ -19,7 +19,7 @@ crontab <<EOF
 0 0 * * *  root    /usr/sbin/zimbrasslrenew.sh
 EOF
 
-certbot certonly --standalone -d $DOMAIN -m $MAIL
+certbot certonly --standalone -d $DOMAIN -m $SSLMAIL
 #
 cd /etc/letsencrypt/live/$DOMAIN/ || exit
 #wget -4 -O /etc/letsencrypt/live/$DOMAIN/zimbra_chain.pem https://letsencrypt.org/certs/trustid-x3-root.pem.txt
