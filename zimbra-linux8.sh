@@ -41,16 +41,16 @@ echo -n "IP Address : "
 read IPADDRESS
 echo ""
 
-echo -n "IP Block : "
-read IPADDRESSBLOCK
-echo ""
+#echo -n "IP Block : "
+#read IPADDRESSBLOCK
+#echo ""
 
 
 # /etc/hosts
 
 cp /etc/hosts /etc/hosts.backup
 
-echo "127.0.0.1       localhost" > /etc/hosts
+#echo "127.0.0.1       localhost" > /etc/hosts
 echo "$IPADDRESS   $HOSTNAME.$DOMAIN       $HOSTNAME" >> /etc/hosts
 
 # Change Hostname
@@ -119,13 +119,13 @@ echo "};" >> /etc/named.conf
 touch /var/named/db.$DOMAIN
 chgrp named /var/named/db.$DOMAIN
 
-echo '$TTL 1D' > /var/named/db.$DOMAIN
+echo '$TTL 14400' > /var/named/db.$DOMAIN
 echo "@       IN SOA  ns1.$DOMAIN. root.$DOMAIN. (" >> /var/named/db.$DOMAIN
 echo '                                        0       ; serial' >> /var/named/db.$DOMAIN
-echo '                                        1D      ; refresh' >> /var/named/db.$DOMAIN
-echo '                                        1H      ; retry' >> /var/named/db.$DOMAIN
-echo '                                        1W      ; expire' >> /var/named/db.$DOMAIN
-echo '                                        3H )    ; minimum' >> /var/named/db.$DOMAIN
+echo '                                        3600      ; refresh' >> /var/named/db.$DOMAIN
+echo '                                        1800      ; retry' >> /var/named/db.$DOMAIN
+echo '                                        604800      ; expire' >> /var/named/db.$DOMAIN
+echo '                                        86400 )    ; minimum' >> /var/named/db.$DOMAIN
 echo "@		IN	NS	ns1.$DOMAIN." >> /var/named/db.$DOMAIN
 echo "@		IN	MX	0 $HOSTNAME.$DOMAIN." >> /var/named/db.$DOMAIN
 echo "ns1	IN	A	$IPADDRESS" >> /var/named/db.$DOMAIN
