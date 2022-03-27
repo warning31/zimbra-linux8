@@ -18,8 +18,9 @@ read presskey
 
 echo -e "[INFO] : Configuring Firewall & Selinux"
 sleep 2
-sed -i s/'SELINUX='/'#SELINUX='/g /etc/selinux/config
-echo 'SELINUX=disabled' >> /etc/selinux/config
+#sed -i s/'SELINUX='/'#SELINUX='/g /etc/selinux/config
+sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config
+#echo 'SELINUX=disabled' >> /etc/selinux/config
 setenforce 0
 service firewalld stop
 service iptables stop
