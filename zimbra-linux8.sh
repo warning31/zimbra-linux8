@@ -108,7 +108,7 @@ NAMED=`ls /etc/ | grep named.conf.back`;
         fi
 
 sed -i s/"listen-on port 53 { 127.0.0.1; };"/"listen-on port 53 { 127.0.0.1; $IPADDRESS; };"/g /etc/named.conf
-sed -i s/"allow-query     { localhost; };"/"allow-query     { localhost; $IPADDRESSBLOCK; };"/g /etc/named.conf
+#sed -i s/"allow-query     { localhost; };"/"allow-query     { localhost; $IPADDRESSBLOCK; };"/g /etc/named.conf
 
 echo 'zone "'$DOMAIN'" IN {' >> /etc/named.conf
 echo "        type master;" >> /etc/named.conf
