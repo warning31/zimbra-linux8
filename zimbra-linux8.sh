@@ -44,7 +44,6 @@ echo ""
 # /etc/hosts
 cp /etc/hosts /etc/hosts.backup
 
-#echo "127.0.0.1       localhost" > /etc/hosts
 echo "$IPADDRESS   $HOSTNAME.$DOMAIN       $HOSTNAME" >> /etc/hosts
 
 # Change Hostname
