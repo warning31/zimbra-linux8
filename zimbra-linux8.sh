@@ -102,8 +102,8 @@ NAMED=`ls /etc/ | grep named.conf.back`;
 	cp /etc/named.conf /etc/named.conf.back        
         fi
 
-sed -i s/"listen-on port 53 { 127.0.0.1; };"/"listen-on port 53 { $IPADDRESS ; };"/g /etc/named.conf
-sed -i s/"allow-query     { localhost; };"/"allow-query     { $IPADDRESS ; };"/g /etc/named.conf
+sed -i s/"listen-on port 53 { 127.0.0.1; };"/"listen-on port 53 { 127.0.0.1; $IPADDRESS ; };"/g /etc/named.conf
+sed -i s/"allow-query     { localhost; };"/"allow-query     { localhost; $IPADDRESS ; };"/g /etc/named.conf
 
 echo 'zone "'$DOMAIN'" IN {' >> /etc/named.conf
 echo "        type master;" >> /etc/named.conf
@@ -127,14 +127,12 @@ echo "ns1	IN	A	$IPADDRESS" >> /var/named/db.$DOMAIN
 echo "$HOSTNAME	IN	A	$IPADDRESS" >> /var/named/db.$DOMAIN
 
 # Insert localhost as the first Nameserver
-mv /etc/resolv.conf /etc/resolv.confbak
-touch /etc/resolv.conf
-#sed -i '1 s/^/nameserver 127.0.0.1\n/' /etc/resolv.conf
-#sed -i s/"nameserver "/"nameserver 8.8.8.8"/g /etc/resolv.conf
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+# 
+sed -i 's/^nameserver .*/nameserver 8.8.8.8/g' /etc/resolv.conf
 echo "nameserver 1.1.1.1" >> /etc/resolv.conf
-# Restart Service & Check results configuring DNS Server
 
+
+# Restart Service & Check results configuring DNS Server
 service named restart
 systemctl enable named
 nslookup $HOSTNAME.$DOMAIN
