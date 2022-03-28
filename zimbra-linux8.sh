@@ -80,6 +80,8 @@ yum -y install libaio
 yum -y install rsync
 yum -y install telnet
 yum -y install aspell
+yum -y install pyzor 
+yum -y perl-Razor-Agent
 yum -y install net-tools
 yum -y install certbot
 
