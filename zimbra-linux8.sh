@@ -84,9 +84,6 @@ yum -y install aspell
 yum -y install net-tools
 yum -y install certbot
 
-# Restart Network
-service network restart
-
 # Configuring DNS Server
 
 echo ""
