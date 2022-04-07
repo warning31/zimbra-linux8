@@ -41,7 +41,7 @@ echo -n "IP Address : "
 read IPADDRESS
 echo ""
 
-# /etc/hosts
+# /etc/hosts ipv6 kapat
 cp /etc/hosts /etc/hosts.backup
 
 echo "$IPADDRESS   $HOSTNAME.$DOMAIN       $HOSTNAME" >> /etc/hosts
