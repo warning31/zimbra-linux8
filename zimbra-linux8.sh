@@ -82,6 +82,7 @@ yum -y install telnet
 yum -y install aspell
 yum -y install pyzor 
 yum -y install perl-Razor-Agent
+yum -y install gcc
 yum -y install net-tools
 yum -y install certbot
 
