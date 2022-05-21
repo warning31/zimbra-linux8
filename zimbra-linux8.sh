@@ -48,6 +48,9 @@ echo "$IPADDRESS   $HOSTNAME.$DOMAIN       $HOSTNAME" >> /etc/hosts
 
 
 #Sysctl.conf 
+echo ""
+echo -e "[INFO] : Configuring Sysctl.conf"
+echo ""
 cp /etc/sysctl.conf /etc/sysctl.confbackup
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
