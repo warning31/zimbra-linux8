@@ -46,6 +46,13 @@ cp /etc/hosts /etc/hosts.backup
 
 echo "$IPADDRESS   $HOSTNAME.$DOMAIN       $HOSTNAME" >> /etc/hosts
 
+
+#Sysctl.conf 
+cp /etc/sysctl.conf /etc/sysctl.confbackup
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+
+
 # Change Hostname
 hostnamectl set-hostname $HOSTNAME.$DOMAIN
 
@@ -100,8 +107,8 @@ NAMED=`ls /etc/ | grep named.conf.back`;
 	cp /etc/named.conf /etc/named.conf.back        
         fi
 
-sed -i s/"listen-on port 53 { 127.0.0.1; };"/"listen-on port 53 { 127.0.0.1; $IPADDRESS ; };"/g /etc/named.conf
-sed -i s/"allow-query     { localhost; };"/"allow-query     { localhost; $IPADDRESS ; };"/g /etc/named.conf
+sed -i s/"listen-on port 53 { 127.0.0.1; };"/"listen-on port 53 { 127.0.0.1; any ; };"/g /etc/named.conf
+sed -i s/"allow-query     { localhost; };"/"allow-query     { localhost; any ; };"/g /etc/named.conf
 
 echo 'zone "'$DOMAIN'" IN {' >> /etc/named.conf
 echo "        type master;" >> /etc/named.conf
