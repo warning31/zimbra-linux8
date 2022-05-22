@@ -28,6 +28,13 @@ systemctl disable firewalld
 systemctl disable iptables
 systemctl disable ip6tables
 
+# Disable service sendmail or postfix
+
+service sendmail stop
+service postfix stop
+systemctl disable sendmail
+systemctl disable postfix
+
 # Configuring network, /etc/hosts and resolv.conf
 
 echo ""
@@ -40,34 +47,22 @@ read DOMAIN
 echo -n "IP Address : "
 read IPADDRESS
 echo ""
-
-# /etc/hosts ipv6 kapat
-cp /etc/hosts /etc/hosts.backup
-
-echo "$IPADDRESS   $HOSTNAME.$DOMAIN       $HOSTNAME" >> /etc/hosts
-
-
-#Sysctl.conf 
-echo ""
 echo -e "[INFO] : Configuring Sysctl.conf"
 echo ""
+
+#Sysctl.conf 
 cp /etc/sysctl.conf /etc/sysctl.confbackup
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 
+# /etc/hosts ipv6 kapat
+cp /etc/hosts /etc/hosts.backup
+echo "$IPADDRESS   $HOSTNAME.$DOMAIN       $HOSTNAME" >> /etc/hosts
 
 # Change Hostname
 hostnamectl set-hostname $HOSTNAME.$DOMAIN
 
-# Disable service sendmail or postfix
-
-service sendmail stop
-service postfix stop
-systemctl disable sendmail
-systemctl disable postfix
-
 # Update repo and install package
-
 yum clean all
 yum -y install epel-release
 yum update -y
