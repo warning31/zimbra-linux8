@@ -19,7 +19,10 @@ crontab <<EOF
 0 0 * * *  root    /usr/sbin/zimbrasslrenew.sh
 EOF
 
-sed -i 's/^DOMAIN=.*/DOMAIN="$DOMAIN"/g' /usr/sbin/zimbrasslrenew.sh
+sed -i s/"DOMAIN=.*/;"/"DOMAIN="$DOMAIN""/g /usr/sbin/zimbrasslrenew.sh
+
+#sed -i 's/^DOMAIN=.*/DOMAIN="$DOMAIN"/g' /usr/sbin/zimbrasslrenew.sh
+
 
 certbot certonly --standalone -d $DOMAIN -m $SSLMAIL
 #
