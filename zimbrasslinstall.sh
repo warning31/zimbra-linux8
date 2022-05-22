@@ -9,7 +9,7 @@ read SSLMAIL
 echo ""
 
 #MAIL="$SSLMAIL"
-DOMAIN="$DOMAIN"
+#DOMAIN="$SSLDOMAIN"
 
 # renew ssl 
 wget -4 -O /usr/sbin/zimbrasslrenew.sh https://raw.githubusercontent.com/warning31/zimbra-linux8/main/zimbrasslrenew.sh
@@ -19,9 +19,7 @@ crontab <<EOF
 0 0 * * *  root    /usr/sbin/zimbrasslrenew.sh
 EOF
 
-
 sed -i 's/^DOMAIN=.*/DOMAIN="$DOMAIN"/g' /usr/sbin/zimbrasslrenew.sh
-
 
 certbot certonly --standalone -d $DOMAIN -m $SSLMAIL
 #
