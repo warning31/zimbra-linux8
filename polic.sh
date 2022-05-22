@@ -1,4 +1,4 @@
-echo -e $ibold"[*] INFO : Configuring Rate Limit Sending Message and Reject Unlisted Domain"$ebold
+echo -e [*] INFO : Configuring Rate Limit Sending Message and Reject Unlisted Domain
 echo ""
 echo "Manual Process"
 echo -e "-------------------------------------------------------------------------"
